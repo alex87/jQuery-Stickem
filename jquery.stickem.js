@@ -32,6 +32,8 @@
 			endStickClass: 'stickit-end',
 			offset: 0,
 			start: 0,
+			// stop when container bottom comes on screen of goes of the top?
+    			stop:'off', // off is default stickem behaviour, on means stickem will end when bottom of container is on screen.
 			onStick: null,
 			onUnstick: null
 		},
@@ -120,6 +122,11 @@
 
 			if(_self.items.length > 0) {
 				var pos = _self.$win.scrollTop();
+				
+		                // end position when container comes onto screen (default is when container bottom goes off the top)
+		                if(_self.config.stop == 'on'){
+		                    pos += _self.windowHeight - _self.config.offset;
+		                }
 
 				for(var i = 0, len = _self.items.length; i < len; i++) {
 					var item = _self.items[i];
