@@ -47,6 +47,8 @@
 			_self.setWindowHeight();
 			_self.getItems();
 			_self.bindEvents();
+			//trigger a fake scroll to set the correct positions!
+    			_self.$win.scroll();	
 
 			return _self;
 		},
@@ -115,6 +117,7 @@
 
 			_self.getItems();
 			_self.setWindowHeight();
+			_self.handleScroll();// handle a scroll to get new positions
 		},
 
 		handleScroll: function() {
